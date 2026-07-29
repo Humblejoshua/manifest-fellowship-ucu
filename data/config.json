@@ -3,7 +3,7 @@
   "appShortName": "ManifestUCU",
   "version": "1.0.0",
   "semester": "May-August 2026",
-  "colors": { "primary": "#800020", "secondary": "#FFFFFF" },
+  "colors": { "primary": "#1d9bf0", "secondary": "#000000" },
   "events": [
     { "name": "Street Preaching", "day": "Wednesday", "time": "07:00", "reminderDays": [0, 1] },
     { "name": "Fellowship Setup", "day": "Wednesday", "time": "16:00", "reminderDays": [0] },

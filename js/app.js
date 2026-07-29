@@ -134,7 +134,6 @@ const Auth = {
   updateUI() {
     if(!STATE.user)return;
     document.getElementById('header-title').textContent='Dashboard';
-    document.querySelector('.user-name').textContent=STATE.user.displayName;
   },
   hasRole(r){return r.includes(STATE.user?.role);}
 };
@@ -425,7 +424,7 @@ const Views = {
     const userId=STATE.user?.displayName||'';
     let as=fu.assignments;
     if(STATE.user?.role!=='admin'&&STATE.user?.role!=='leader'){
-      as=as.filter(a=>{const min=Data.getMember(a.ministerId);return min&&min.name.toLowerCase().includes(userName.toLowerCase())});
+      as=as.filter(a=>{const min=Data.getMember(a.ministerId);return min&&min.name.toLowerCase().includes((STATE.user.displayName||'').toLowerCase())});
     }
     if(!as.length) return '<div class="empty-state"><div class="empty-icon">'+Utils.svg('followup')+'</div><p>No assignments</p></div>';
     return `<div style="padding:0 16px;">
@@ -566,7 +565,7 @@ const Views = {
       const dn=dayMap[e.day]??3,[h,m]=e.time.split(':').map(Number);
       const n=new Date(), cd=n.getDay(), d2=new Date(n); d2.setDate(n.getDate()+dn-cd);
       const ds=d2.toISOString().replace(/[-:]/g,'').split('.')[0].slice(0,15);
-      const ss=ds+'T'+e.time.replace(':','')+'00', eh=h+1, es=ds+T+e.time.replace(':','')+'00';
+      const ss=ds+'T'+e.time.replace(':','')+'00', eh=h+1, es=ds+'T'+e.time.replace(':','')+'00';
       ics.push('BEGIN:VEVENT','DTSTART:'+ss,'DTEND:'+es,'RRULE:FREQ=WEEKLY;BYDAY='+dayNames[dn].slice(0,2),'SUMMARY:'+e.name+' - Manifest Fellowship UCU','DESCRIPTION:'+e.name+' at '+e.day+'s '+e.time+'\\nManifest Fellowship UCU','END:VEVENT');
     });
     ics.push('END:VCALENDAR');
@@ -795,10 +794,10 @@ const Notifications = {
     events.forEach(e=>{
       if(e.day===tName&&e.reminderDays.includes(0)){
         const[eh,em]=e.time.split(':').map(Number), et=eh*60+em, ct=now.getHours()*60+now.getMinutes();
-        if(ct<et&&ct>=et-60) new Notification('🔔 Manifest Fellowship',{body:'📌 '+e.name+' today at '+e.time,icon:'assets/logo.jpeg',tag:e.name+today});
+        if(ct<et&&ct>=et-60) new Notification('Manifest Fellowship UCU',{body:e.name+' today at '+e.time,icon:'assets/logo.jpeg',tag:e.name+today});
       }
       if(e.day===tomName&&e.reminderDays.includes(1))
-        new Notification('🔔 Manifest Fellowship',{body:'📌 '+e.name+' tomorrow ('+e.day+') at '+e.time,icon:'assets/logo.jpeg',tag:e.name+today});
+        new Notification('Manifest Fellowship UCU',{body:e.name+' tomorrow ('+e.day+') at '+e.time,icon:'assets/logo.jpeg',tag:e.name+today});
     });
   }
 };
