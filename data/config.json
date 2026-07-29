@@ -1,0 +1,19 @@
+{
+  "appName": "Manifest Fellowship UCU",
+  "appShortName": "ManifestUCU",
+  "version": "1.0.0",
+  "semester": "May-August 2026",
+  "colors": { "primary": "#800020", "secondary": "#FFFFFF" },
+  "events": [
+    { "name": "Street Preaching", "day": "Wednesday", "time": "07:00", "reminderDays": [0, 1] },
+    { "name": "Fellowship Setup", "day": "Wednesday", "time": "16:00", "reminderDays": [0] },
+    { "name": "Fellowship Service", "day": "Wednesday", "time": "17:30", "reminderDays": [0, 1] },
+    { "name": "Outreach", "day": "Saturday", "time": "08:00", "reminderDays": [0, 1] }
+  ],
+  "users": [
+    { "username": "admin", "passwordHash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "role": "admin", "displayName": "Admin User" },
+    { "username": "leader", "passwordHash": "6b4b7f0b81d0b3494dd853bc45c0605fa99125c93de8a9850cbc62b2f6d52d13", "role": "leader", "displayName": "Team Leader" },
+    { "username": "minister", "passwordHash": "fde36861e505b2542ef717be43e65169f019def066f391cd0923ba935e9f2c0d", "role": "minister", "displayName": "Minister User" }
+  ],
+  "ministries": ["Outreach", "Worship", "Prayer", "Follow-up", "Media", "Ushering", "Protocol", "None"]
+}
